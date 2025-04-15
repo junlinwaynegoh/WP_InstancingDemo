@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\WP_Graphics">
+      <UniqueIdentifier>{f8e8a58f-0f13-4aee-9ebb-71e3d08b5753}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WP_Graphics">
+      <UniqueIdentifier>{5e17dd11-f5dc-4276-8f51-940d28bc7ada}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{a6ec1ad4-d827-455b-aea1-a4e4cb4c104e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ImGui">
+      <UniqueIdentifier>{18dc2d06-f5ec-49bf-98c6-1f62cd376354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ImGui\backends">
+      <UniqueIdentifier>{0b2fa85a-9bdf-45d0-9e1d-f79c681270a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WP_Scene">
+      <UniqueIdentifier>{1869e6c2-7ea1-4217-8f79-a0a122265531}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WP_Scene">
+      <UniqueIdentifier>{8a6ec0a4-6406-4aeb-ab45-7bb94ab9b67e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WP_Particle">
+      <UniqueIdentifier>{9677c8e1-639f-42ae-962b-a4080f38cbaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WP_Particle">
+      <UniqueIdentifier>{cc2f7614-abcd-41d5-9491-6c4f23841a05}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WP_Graphics\WP_Shader.cpp">
+      <Filter>Source Files\WP_Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Extern\imgui-1.91.9b\imgui_demo.cpp">
+      <Filter>Source Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Extern\imgui-1.91.9b\imgui_tables.cpp">
+      <Filter>Source Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Extern\imgui-1.91.9b\imgui_widgets.cpp">
+      <Filter>Source Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Extern\imgui-1.91.9b\imgui.cpp">
+      <Filter>Source Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Extern\imgui-1.91.9b\imgui_draw.cpp">
+      <Filter>Source Files\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Extern\imgui-1.91.9b\backends\imgui_impl_opengl3.cpp">
+      <Filter>Source Files\ImGui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Extern\imgui-1.91.9b\backends\imgui_impl_glfw.cpp">
+      <Filter>Source Files\ImGui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WP_Scene\WP_Scene.cpp">
+      <Filter>Source Files\WP_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WP_Scene\WP_DefaultScene.cpp">
+      <Filter>Source Files\WP_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WP_Graphics\WP_Primitive.cpp">
+      <Filter>Source Files\WP_Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WP_Scene\WP_DefaultParticleScene.cpp">
+      <Filter>Source Files\WP_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WP_Particle\WP_Particle.cpp">
+      <Filter>Source Files\WP_Particle</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Inc\WP_Graphics\WP_Shader.h">
+      <Filter>Header Files\WP_Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\WP_Graphics\WP_Primitive.h">
+      <Filter>Header Files\WP_Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\WP_Scene\WP_Scene.h">
+      <Filter>Header Files\WP_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\WP_Scene\WP_DefaultScene.h">
+      <Filter>Header Files\WP_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\WP_Scene\WP_DefaultParticleScene.h">
+      <Filter>Header Files\WP_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\WP_Particle\WP_Particle.h">
+      <Filter>Header Files\WP_Particle</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Shaders\DefaultShader.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\DefaultShader.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\DefaultParticleShader.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\DefaultParticleShader.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\DefaultParticleInstanced.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\DefaultParticleInstanced.vert">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
