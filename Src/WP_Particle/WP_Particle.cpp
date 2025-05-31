@@ -34,7 +34,7 @@ int randomInt(int min, int max) {
 }
 
 void WP_ParticleSystem::GenerateParticles(unsigned int
-	_numParticles)
+	_numParticles, int _maxImage)
 {
 	DestroyParticles();
 
@@ -45,6 +45,7 @@ void WP_ParticleSystem::GenerateParticles(unsigned int
 		m_particle.pos = randomPos(-1.8,1.8);
 		m_particle.direction = randomDirection2D();
 		m_particle.col = randomColor();
+		m_particle.imageGenerated = randomInt(0, _maxImage);
 
 		m_particles.push_back(m_particle);
 	}

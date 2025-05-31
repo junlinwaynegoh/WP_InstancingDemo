@@ -1,7 +1,6 @@
 #include <WP_Graphics/WP_Image.h>
 #include <iostream>
 
-#define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
 WP_Image::WP_Image()
@@ -66,6 +65,10 @@ int WP_Image::GetWidth()
 int WP_Image::GetHeight()
 {
     return m_height;
+}
+int WP_Image::GetChannels()
+{
+    return m_nrChannels;
 }
 const std::string& WP_Image::GetImageName() const
 {

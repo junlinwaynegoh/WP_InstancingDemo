@@ -49,6 +49,8 @@
     <ClInclude Include="..\Inc\WP_Scene\WP_Scene.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Shaders\DefaultImageParticleInstancedArray.frag" />
+    <None Include="..\Shaders\DefaultImageParticleInstancedArray.vert" />
     <None Include="..\Shaders\DefaultImageShader.frag" />
     <None Include="..\Shaders\DefaultImageShader.vert" />
     <None Include="..\Shaders\DefaultParticleInstanced.frag" />
@@ -57,8 +59,8 @@
     <None Include="..\Shaders\DefaultParticleShader.vert" />
     <None Include="..\Shaders\DefaultShader.frag" />
     <None Include="..\Shaders\DefaultShader.vert" />
-    <None Include="..\Shaders\WP_ImageArray.frag" />
-    <None Include="..\Shaders\WP_ImageArray.vert" />
+    <None Include="..\Shaders\DefaultImageArrayShader.frag" />
+    <None Include="..\Shaders\DefaultImageArrayShader.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

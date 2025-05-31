@@ -101,7 +101,7 @@ void WP_DefaultParticleScene::RenderDefaultInstanced()
     glBufferData(GL_ARRAY_BUFFER, modelMatrices.size() 
         * sizeof(instancedData), modelMatrices.data(), GL_STATIC_DRAW);
 
-    unsigned int vertexBindingLocation = 2;
+    unsigned int vertexBindingLocation = 3;
 
     for (GLuint i = 0; i < 4; i++) {
         glEnableVertexAttribArray(vertexBindingLocation + i);
@@ -109,7 +109,7 @@ void WP_DefaultParticleScene::RenderDefaultInstanced()
         glVertexAttribDivisor(vertexBindingLocation + i, 1);
     }
 
-    unsigned int fragmentBindingLocation = 6;
+    unsigned int fragmentBindingLocation = 7;
     glEnableVertexAttribArray(fragmentBindingLocation);
     glVertexAttribPointer(fragmentBindingLocation, 3, GL_FLOAT, GL_FALSE, sizeof(instancedData), (void*)(sizeof(glm::mat4)));
     glVertexAttribDivisor(fragmentBindingLocation, 1);
@@ -144,7 +144,7 @@ void WP_DefaultParticleScene::RenderDefaultInstancedOptimised()
     glBufferSubData(GL_ARRAY_BUFFER, 0, modelMatrices.size()
         * sizeof(instancedData), modelMatrices.data());
 
-    unsigned int vertexBindingLocation = 2;
+    unsigned int vertexBindingLocation = 3;
 
     for (GLuint i = 0; i < 4; i++) {
         glEnableVertexAttribArray(vertexBindingLocation + i);
@@ -152,7 +152,7 @@ void WP_DefaultParticleScene::RenderDefaultInstancedOptimised()
         glVertexAttribDivisor(vertexBindingLocation + i, 1);
     }
 
-    unsigned int fragmentBindingLocation = 6;
+    unsigned int fragmentBindingLocation = 7;
     glEnableVertexAttribArray(fragmentBindingLocation);
     glVertexAttribPointer(fragmentBindingLocation, 3, GL_FLOAT, GL_FALSE, sizeof(instancedData), (void*)(sizeof(glm::mat4)));
     glVertexAttribDivisor(fragmentBindingLocation, 1);

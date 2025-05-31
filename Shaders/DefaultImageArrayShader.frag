@@ -11,9 +11,10 @@ in vec2 oTexCoord;
 out vec4 fragment;
 
 //image texture
-uniform sampler2D uTexture;
+uniform sampler2DArray uTextureArray;
+uniform int ulayerIndex;
 
 void main()
 {
-	fragment = texture(uTexture,oTexCoord);	
+	fragment = texture(uTextureArray,vec3(oTexCoord, ulayerIndex));	
 }

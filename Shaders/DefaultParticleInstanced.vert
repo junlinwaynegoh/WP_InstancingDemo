@@ -10,13 +10,15 @@ layout(location = 0) in vec2 vPos;
 //primitive location = 1 is in color binding
 //reference wp_primitive.cpp vposbindloc and vcolbinLoc
 
-//location 2,3,4,5 are reserved in this case
+//primitive location = 2 is in uv 
+
+//location 3,4,5,6 are reserved in this case
 //so the next should start from pos 6
-layout(location = 2) in mat4 MVP;
+layout(location = 3) in mat4 MVP;
 
 //for example
 //to set color
-layout(location = 6) in vec3 color;
+layout(location = 7) in vec3 color;
 
 out vec3 fragCol;
 

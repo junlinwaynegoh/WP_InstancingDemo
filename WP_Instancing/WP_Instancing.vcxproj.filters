@@ -148,10 +148,16 @@
     <None Include="..\Shaders\DefaultImageShader.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="..\Shaders\WP_ImageArray.frag">
+    <None Include="..\Shaders\DefaultImageArrayShader.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="..\Shaders\WP_ImageArray.vert">
+    <None Include="..\Shaders\DefaultImageArrayShader.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\DefaultImageParticleInstancedArray.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\DefaultImageParticleInstancedArray.frag">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

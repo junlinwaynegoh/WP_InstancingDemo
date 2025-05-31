@@ -11,6 +11,8 @@ void WP_ImageScene::PreSceneInitialisation()
 	m_imageShaderID =
 		WP_ShaderManager::GetInstance().AddShader("../Shaders/DefaultImageShader");
 	m_mvpLocation = glGetUniformLocation(m_imageShaderID, "MVP");
+	m_textureLocation = glGetUniformLocation(m_imageShaderID, "uTexture");
+
 
 	std::string path = "../Assets/Images";
 
@@ -35,6 +37,7 @@ void WP_ImageScene::PreSceneInitialisation()
 
 void WP_ImageScene::RenderImage(const glm::mat4& _mvp)
 {
+	glUseProgram(m_imageShaderID);
 	GLuint textureLoc = 0;
 	
 	glUniform1i(m_textureLocation, textureLoc);
@@ -52,7 +55,6 @@ void WP_ImageScene::UpdateScene()
 	mvp = glm::mat4(1.f);
 	mvp = glm::scale(mvp, glm::vec3(0.5f, 0.5f, 1.f));
 
-	glUseProgram(m_imageShaderID);
 	RenderImage(mvp);
 }
 

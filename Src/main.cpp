@@ -11,6 +11,10 @@
 #include <WP_Scene/WP_DefaultScene.h>
 #include <WP_Scene/WP_DefaultParticleScene.h>
 #include <WP_Scene/WP_ImageScene.h>
+#include <WP_Scene/WP_ImageArrayScene.h>
+
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb_image.h>
 
 static void error_callback(int error, const char* description)
 {
@@ -70,6 +74,8 @@ int main(void)
         std::make_unique<WP_DefaultParticleScene>());
     WP_SceneManager::GetInstance().AddScene("DefaultImageScene",
         std::make_unique<WP_ImageScene>());
+    WP_SceneManager::GetInstance().AddScene("DefaultImageArrayScene",
+        std::make_unique<WP_ImageArrayScene>());
 
 
     // NOTE: OpenGL error checks have been omitted for brevity

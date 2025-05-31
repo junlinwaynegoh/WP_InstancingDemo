@@ -1,4 +1,7 @@
 
+#ifndef WP_IMAGE_H
+#define WP_IMAGE_H
+
 #include <string>
 #include <GL/glew.h>
 #include <glm.hpp>
@@ -20,8 +23,11 @@ public:
 	GLuint GetImage();
 	int GetWidth();
 	int GetHeight();
+	int GetChannels();
 	const std::string& GetImageName() const;
 
 private:
 	void FreeImage();
 };
+
+#endif
