@@ -84,6 +84,15 @@
     <ClCompile Include="..\Src\WP_Particle\WP_Particle.cpp">
       <Filter>Source Files\WP_Particle</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\WP_Graphics\WP_Image.cpp">
+      <Filter>Source Files\WP_Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WP_Scene\WP_ImageScene.cpp">
+      <Filter>Source Files\WP_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\WP_Scene\WP_ImageArrayScene.cpp">
+      <Filter>Source Files\WP_Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Inc\WP_Graphics\WP_Shader.h">
@@ -104,6 +113,15 @@
     <ClInclude Include="..\Inc\WP_Particle\WP_Particle.h">
       <Filter>Header Files\WP_Particle</Filter>
     </ClInclude>
+    <ClInclude Include="..\Inc\WP_Graphics\WP_Image.h">
+      <Filter>Header Files\WP_Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\WP_Scene\WP_ImageScene.h">
+      <Filter>Header Files\WP_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\WP_Scene\WP_ImageArrayScene.h">
+      <Filter>Header Files\WP_Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Shaders\DefaultShader.frag">
@@ -122,6 +140,18 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="..\Shaders\DefaultParticleInstanced.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\DefaultImageShader.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\DefaultImageShader.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\WP_ImageArray.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\WP_ImageArray.vert">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

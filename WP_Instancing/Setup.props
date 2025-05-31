@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <ExternalIncludePath>$(SolutionDir)Extern\glew-2.2.0\include;$(SolutionDir)Extern\glfw-3.4\include;$(SolutionDir)Extern\glm;$(SolutionDir)Extern\imgui-1.91.9b;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>$(SolutionDir)Extern\glew-2.2.0\include;$(SolutionDir)Extern\glfw-3.4\include;$(SolutionDir)Extern\glm;$(SolutionDir)Extern\imgui-1.91.9b;$(SolutionDir)Extern\stb;$(ExternalIncludePath)</ExternalIncludePath>
     <LibraryPath>$(SolutionDir)Extern\glew-2.2.0\lib\Release\x64;$(SolutionDir)Extern\glfw-3.4\lib-vc2022;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)Inc;$(IncludePath)</IncludePath>
   </PropertyGroup>

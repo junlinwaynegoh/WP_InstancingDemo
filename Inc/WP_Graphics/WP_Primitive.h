@@ -8,6 +8,7 @@ typedef struct Vertex
 {
     glm::vec2 pos;
     glm::vec3 col;
+    glm::vec2 texCoord;
 } Vertex;
 
 namespace Primitives

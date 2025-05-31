@@ -27,6 +27,7 @@ namespace Primitives
 
         GLuint vposbindLocation = 0;
         GLuint vcolbindLocation = 1;
+        GLuint vtexbindLocation = 2;
 
         glEnableVertexAttribArray(vposbindLocation);
         glVertexAttribPointer(vposbindLocation, 2, GL_FLOAT, GL_FALSE,
@@ -35,6 +36,12 @@ namespace Primitives
         glEnableVertexAttribArray(vcolbindLocation);
         glVertexAttribPointer(vcolbindLocation, 3, GL_FLOAT, GL_FALSE,
             sizeof(Vertex), (void*)offsetof(Vertex, col));
+
+        glEnableVertexAttribArray(vtexbindLocation);
+        glVertexAttribPointer(vtexbindLocation, 2, GL_FLOAT, GL_FALSE,
+            sizeof(Vertex), (void*)offsetof(Vertex, texCoord));
+
+
 
         Primitive primitive;
         primitive.vertexArray = vertex_array;
@@ -49,16 +56,16 @@ namespace Primitives
     {
         const Vertex TriangleVertices[3] =
         {
-            { { -0.6f, -0.4f }, { 1.f, 0.f, 0.f } },
-            { {  0.6f, -0.4f }, { 0.f, 1.f, 0.f } },
-            { {   0.f,  0.6f }, { 0.f, 0.f, 1.f } }
+            { { -0.6f, -0.4f }, { 1.f, 0.f, 0.f },{0,1}},
+            { {  0.6f, -0.4f }, { 0.f, 1.f, 0.f },{1,0} },
+            { {   0.f,  0.6f }, { 0.f, 0.f, 1.f },{0,0} }
         };
         const Vertex SquareVertices[4] =
         {
-            { { -1.f,   -1.f}  , { 1.f,0.f,0.f}},
-            { { 1.f ,   -1.f}  , { 0.f,1.f,0.f}},
-            { { 1.f ,   1.f}   , { 0.f,0.f,1.f}},
-            { { -1.f,   1.f}   , { 1.f,0.f,0.f}}
+            { { -1.f,   -1.f}  , { 1.f,0.f,0.f} , {0,1}},
+            { { 1.f ,   -1.f}  , { 0.f,1.f,0.f} , {1,1}},
+            { { 1.f ,   1.f}   , { 0.f,0.f,1.f} , {1,0}},
+            { { -1.f,   1.f}   , { 1.f,0.f,0.f} , {0,0}}
         };
 
         const GLuint triangleIndices[3] = {

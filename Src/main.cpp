@@ -10,6 +10,7 @@
 #include <WP_Scene/WP_Scene.h>
 #include <WP_Scene/WP_DefaultScene.h>
 #include <WP_Scene/WP_DefaultParticleScene.h>
+#include <WP_Scene/WP_ImageScene.h>
 
 static void error_callback(int error, const char* description)
 {
@@ -65,8 +66,10 @@ int main(void)
 
 
     WP_SceneManager::GetInstance().AddScene("DefaultScene", std::make_unique<WP_DefaultScene>());
-    WP_SceneManager::GetInstance().AddScene("DefaultParticleShader", 
+    WP_SceneManager::GetInstance().AddScene("DefaultParticleScene", 
         std::make_unique<WP_DefaultParticleScene>());
+    WP_SceneManager::GetInstance().AddScene("DefaultImageScene",
+        std::make_unique<WP_ImageScene>());
 
 
     // NOTE: OpenGL error checks have been omitted for brevity
@@ -79,6 +82,9 @@ int main(void)
     Primitives::Primitive::CompilePrimitives();
 
     float temp = 0;
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     while (!glfwWindowShouldClose(window))
     {
