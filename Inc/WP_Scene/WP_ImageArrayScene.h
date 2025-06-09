@@ -10,6 +10,12 @@ struct WP_ImageArrayScene : WP_Scene
 		glm::mat4 matrix;
 		GLfloat index;
 	};
+	struct instancedTintData
+	{
+		glm::mat4 matrix;
+		GLfloat index;
+		glm::vec3 color;
+	};
 
 struct WP_ImageArray
 {
@@ -49,17 +55,32 @@ private:
 	GLuint m_arrayImageTextureLoc;
 	GLuint m_arrayLayerIndexLoc;
 
+	GLuint m_arrayImageColorShaderID;
+	GLuint m_arrayImageColorMVPLoc;
+	GLuint m_arrayImageColorTextureLoc;
+	GLuint m_arrayLayerColorIndexLoc;
+	GLuint m_arrayColorTintLoc;
+
 	GLuint m_instancedShaderID;
 	GLuint m_instancedVBO;
 	GLuint m_instancedTextureLoc;
+
+	GLuint m_instancedTintImageShaderID;
+	GLuint m_instancedTintVBO;
+	GLuint m_instancedTintImageTextureLoc;
+
 	std::vector<instancedData> modelMatrices;
+	std::vector<instancedTintData> tintData;
 
 private:
 	void RenderDefault();
 	void RenderArray();
+	void RenderArrayTint();
 	void RenderArrayInstanced();
+	void RenderArrayInstancedTint();
 	void RenderImage(const glm::mat4& _mvp, int _imageIndex);
 	void RenderImageArray(const glm::mat4& _mvp, int _imageIndex);
+	void RenderImageArrayTint(const glm::mat4& _mvp, int _imageIndex, const glm::vec3& _colorTint);
 
 public:
 	void StartScene();

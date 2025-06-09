@@ -160,5 +160,17 @@
     <None Include="..\Shaders\DefaultImageParticleInstancedArray.frag">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\Shaders\DefaultImageParticleInstancedArrayColor.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\DefaultImageParticleInstancedArrayColor.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\DefaultImageArrayColorShader.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\DefaultImageArrayColorShader.frag">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

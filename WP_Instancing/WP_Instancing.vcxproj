@@ -49,8 +49,12 @@
     <ClInclude Include="..\Inc\WP_Scene\WP_Scene.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Shaders\DefaultImageArrayColorShader.frag" />
+    <None Include="..\Shaders\DefaultImageArrayColorShader.vert" />
     <None Include="..\Shaders\DefaultImageParticleInstancedArray.frag" />
     <None Include="..\Shaders\DefaultImageParticleInstancedArray.vert" />
+    <None Include="..\Shaders\DefaultImageParticleInstancedArrayColor.frag" />
+    <None Include="..\Shaders\DefaultImageParticleInstancedArrayColor.vert" />
     <None Include="..\Shaders\DefaultImageShader.frag" />
     <None Include="..\Shaders\DefaultImageShader.vert" />
     <None Include="..\Shaders\DefaultParticleInstanced.frag" />
