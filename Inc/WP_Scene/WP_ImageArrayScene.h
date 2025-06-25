@@ -21,7 +21,7 @@ struct WP_ImageArrayScene : WP_Scene
 		glm::vec2 pos;
 		glm::vec3 col;
 		glm::vec2 texCoord;
-		GLint batchedImage;
+		GLfloat batchedImage;
 	};
 
 struct WP_ImageArray

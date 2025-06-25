@@ -7,7 +7,7 @@
 //from vertex shader
 in vec2 oTexCoord;
 in vec3 oColor;
-in flat int oImageIndex;
+in float oImageIndex;
 
 //the resulting fragment/(color of the pixel)
 out vec4 fragment;

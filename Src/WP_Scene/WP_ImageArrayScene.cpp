@@ -303,7 +303,7 @@ void WP_ImageArrayScene::RenderArrayBatched()
 		sizeof(VertexBatched), (void*)offsetof(VertexBatched, texCoord));
 
 	glEnableVertexAttribArray(vLayerIndexLocation);
-	glVertexAttribPointer(vLayerIndexLocation, 1, GL_INT, GL_FALSE,
+	glVertexAttribPointer(vLayerIndexLocation, 1, GL_FLOAT, GL_FALSE,
 		sizeof(VertexBatched), (void*)offsetof(VertexBatched, batchedImage));
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_batchedIndicesBuffer);
