@@ -16,6 +16,13 @@ struct WP_ImageArrayScene : WP_Scene
 		GLfloat index;
 		glm::vec3 color;
 	};
+	typedef struct VertexBatched
+	{
+		glm::vec2 pos;
+		glm::vec3 col;
+		glm::vec2 texCoord;
+		GLint batchedImage;
+	};
 
 struct WP_ImageArray
 {
@@ -69,8 +76,18 @@ private:
 	GLuint m_instancedTintVBO;
 	GLuint m_instancedTintImageTextureLoc;
 
+	GLuint m_batchedTintImageShaderID;
+	GLuint m_batchedTintImageTextureLoc;
+
 	std::vector<instancedData> modelMatrices;
 	std::vector<instancedTintData> tintData;
+
+	std::vector<VertexBatched> batchedData;
+	std::vector<GLuint> batchedIndices;
+	GLuint m_batchedVertexArray;
+	GLuint m_batchedVertexBuffer;
+	GLuint m_batchedIndicesBuffer;
+
 
 private:
 	void RenderDefault();
@@ -81,7 +98,7 @@ private:
 	void RenderImage(const glm::mat4& _mvp, int _imageIndex);
 	void RenderImageArray(const glm::mat4& _mvp, int _imageIndex);
 	void RenderImageArrayTint(const glm::mat4& _mvp, int _imageIndex, const glm::vec3& _colorTint);
-
+	void RenderArrayBatched();
 public:
 	void StartScene();
 	void PreSceneInitialisation();

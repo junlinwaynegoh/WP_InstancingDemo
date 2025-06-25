@@ -240,6 +240,76 @@ void WP_ImageArrayScene::RenderArrayInstancedTint()
 
 	glDrawElementsInstanced(GL_TRIANGLES, Primitives::Primitive::square.indicesSize, GL_UNSIGNED_INT, 0, m_particleSystem.m_particles.size());
 }
+void WP_ImageArrayScene::RenderArrayBatched()
+{
+
+	glUseProgram(m_batchedTintImageShaderID);
+
+	const Vertex SquareVertices[4] =
+	{
+		{ { -1.f,   -1.f}  , { 1.f,0.f,0.f} , {0,1}},
+		{ { 1.f ,   -1.f}  , { 0.f,1.f,0.f} , {1,1}},
+		{ { 1.f ,   1.f}   , { 0.f,0.f,1.f} , {1,0}},
+		{ { -1.f,   1.f}   , { 1.f,0.f,0.f} , {0,0}}
+	};
+
+	glBindVertexArray(m_batchedVertexArray);
+
+	GLuint vposbindLocation = 0;
+	GLuint vcolbindLocation = 1;
+	GLuint vtexbindLocation = 2;
+	GLuint vLayerIndexLocation = 3;
+
+	GLuint textureLoc = 0;
+	glUniform1i(m_batchedTintImageTextureLoc, textureLoc);
+	glActiveTexture(textureLoc);
+	glBindTexture(GL_TEXTURE_2D_ARRAY, m_imageArray.m_imageArrayID);
+
+	for (int i = 0; i < m_particleSystem.m_particles.size(); ++i)
+	{
+		glm::mat4 mvp;
+		mvp = glm::mat4(1.f);
+		mvp = glm::translate(mvp, glm::vec3(m_particleSystem.m_particles[i].pos.x,
+			m_particleSystem.m_particles[i].pos.y, 0.0f));
+		mvp = glm::scale(mvp, glm::vec3(0.1f));
+
+		for (int x = 0; x < 4; ++x)
+		{
+			batchedData.push_back(VertexBatched());
+			VertexBatched& currentBatchedData = batchedData[batchedData.size() - 1];
+			currentBatchedData.col = m_particleSystem.m_particles[i].col;
+			currentBatchedData.pos = mvp * glm::vec4(SquareVertices[x].pos.x,SquareVertices[x].pos.y, 0, 1);
+			currentBatchedData.texCoord = SquareVertices[x].texCoord;
+			currentBatchedData.batchedImage = m_particleSystem.m_particles[i].imageGenerated;
+		}
+	}
+
+	glBindBuffer(GL_ARRAY_BUFFER, m_batchedVertexBuffer);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, batchedData.size()
+		* sizeof(VertexBatched), batchedData.data());
+
+	batchedData.clear();
+
+	glEnableVertexAttribArray(vposbindLocation);
+	glVertexAttribPointer(vposbindLocation, 2, GL_FLOAT, GL_FALSE,
+		sizeof(VertexBatched), (void*)offsetof(VertexBatched, pos));
+
+	glEnableVertexAttribArray(vcolbindLocation);
+	glVertexAttribPointer(vcolbindLocation, 3, GL_FLOAT, GL_FALSE,
+		sizeof(VertexBatched), (void*)offsetof(VertexBatched, col));
+
+	glEnableVertexAttribArray(vtexbindLocation);
+	glVertexAttribPointer(vtexbindLocation, 2, GL_FLOAT, GL_FALSE,
+		sizeof(VertexBatched), (void*)offsetof(VertexBatched, texCoord));
+
+	glEnableVertexAttribArray(vLayerIndexLocation);
+	glVertexAttribPointer(vLayerIndexLocation, 1, GL_INT, GL_FALSE,
+		sizeof(VertexBatched), (void*)offsetof(VertexBatched, batchedImage));
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_batchedIndicesBuffer);
+
+	glDrawElements(GL_TRIANGLES, m_particleSystem.m_particles.size() * 6, GL_UNSIGNED_INT, 0);
+}
 
 void WP_ImageArrayScene::PreSceneInitialisation()
 {
@@ -268,6 +338,10 @@ void WP_ImageArrayScene::PreSceneInitialisation()
 	m_arrayImageColorTextureLoc = glGetUniformLocation(m_arrayImageColorShaderID, "uTextureArray");
 	m_arrayLayerColorIndexLoc = glGetUniformLocation(m_arrayImageColorShaderID, "ulayerIndex");
 	m_arrayColorTintLoc = glGetUniformLocation(m_arrayImageColorShaderID, "uColorTint");
+
+	m_batchedTintImageShaderID =
+		WP_ShaderManager::GetInstance().AddShader("../Shaders/DefaultImageArrayColorBatched");
+	m_arrayImageColorTextureLoc = glGetUniformLocation(m_batchedTintImageTextureLoc, "uTextureArray");
 
 	std::string path = "../Assets/ImagesArray";
 
@@ -305,6 +379,35 @@ void WP_ImageArrayScene::PreSceneInitialisation()
 
 
 	modelMatrices.reserve(m_maxParticles);
+	batchedData.reserve(m_maxParticles * 4);
+	batchedIndices.reserve(m_maxParticles * 6);
+
+	glGenVertexArrays(1, &m_batchedVertexArray);
+	glBindVertexArray(m_batchedVertexArray);
+
+	glGenBuffers(1, &m_batchedVertexBuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, m_batchedVertexBuffer);
+	glBufferData(GL_ARRAY_BUFFER, 4 * m_maxParticles * sizeof(VertexBatched),
+		NULL, GL_DYNAMIC_DRAW);
+
+	const GLuint squareIndices[6] = {
+	   0, 1, 2,
+	   2, 3, 0
+	};
+
+	for (int i = 0; i < m_maxParticles; ++i)
+	{
+		for (int x = 0; x < 6; ++x)
+		{
+			batchedIndices.push_back(squareIndices[x] + i * 4);
+		}
+	}
+
+	glGenBuffers(1, &m_batchedIndicesBuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_batchedIndicesBuffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * m_maxParticles * sizeof(GLuint),
+		batchedIndices.data(), GL_STATIC_DRAW);
+
 }
 
 void WP_ImageArrayScene::StartScene()
@@ -323,7 +426,7 @@ void WP_ImageArrayScene::RenderImGui()
 
 	int currentSelection = static_cast<int>(m_renderType);
 
-	const char* renderType[] = { "Render Default", "Render Array", "Render Instanced","Render Array Instanced Tint","Render Array Tint"};
+	const char* renderType[] = { "Render Default", "Render Array", "Render Instanced","Render Array Instanced Tint","Render Array Tint", "Render Array Batched"};
 	if (ImGui::Combo("render type", &currentSelection, renderType, IM_ARRAYSIZE(renderType)))
 	{
 		m_renderType = (currentSelection);
@@ -360,6 +463,11 @@ void WP_ImageArrayScene::UpdateScene()
 	case 4:
 	{
 		RenderArrayTint();
+		break;
+	}
+	case 5:
+	{
+		RenderArrayBatched();
 		break;
 	}
 	default:

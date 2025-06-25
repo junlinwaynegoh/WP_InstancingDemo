@@ -172,5 +172,11 @@
     <None Include="..\Shaders\DefaultImageArrayColorShader.frag">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\Shaders\DefaultImageArrayColorBatched.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\DefaultImageArrayColorBatched.vert">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
